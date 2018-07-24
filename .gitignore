@@ -1,0 +1,11 @@
+# The config.lua file have to be copied from config.lua.dist then edited
+config.lua
+
+# The copied version of the mediator (if windows is Bizhawk's host)
+mediator.lua
+
+# Build of the scaffolding to put into your new tas folder
+tas-scaffolding.tar.gz
+
+# Modules
+lua_modules
