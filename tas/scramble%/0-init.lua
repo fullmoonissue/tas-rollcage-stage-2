@@ -1,7 +1,16 @@
-local Input = require('tas/input')
-local input = Input()
+local input = require('tas/input')()
 
---local cf
---cf = input:start(1, 2)
+input:cross(1090, 5)
+input:cross(1206, 5)
+input:cross(1311, 5)
+input:start(2068)
+input:cross(2088)
+input:down(2138)
+input:down(2142)
+input:down(2146)
+input:down(2150)
+input:cross(2154)
+input:cross(2188)
+input:cross(2228)
 
 return input:all()

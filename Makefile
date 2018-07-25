@@ -2,13 +2,6 @@ install:
 	luarocks install mediator_lua --tree lua_modules
 	luarocks install luafilesystem --tree lua_modules
 
-install-dev:
-	luarocks install luaunit --tree lua_modules
-
-# these packages can't be installed into a specific tree, a sudo right might be asked
-install-no-custom-tree:
-	luarocks install luacheck
-
 init:
 	@mv config.lua.dist config.lua
 	@mv doc/README-template.md README.md
@@ -26,15 +19,6 @@ bizhawk-dump:
 
 bizhawk-lfs:
 	@lua -e "f=io.open('bizhawk/files.lua', 'w'); f:write(require('tas/dump')().lfsForBizhawk('tas')); f:close();"
-
-build-scaffolding:
-	@rm -f tas-scaffolding.tar.gz
-	@touch tas-scaffolding.tar.gz
-	@tar -zcf tas-scaffolding.tar.gz --exclude=tas-scaffolding.tar.gz -X .tarignore .
-	@cat doc/build-scaffolding.md
-
-check:
-	luacheck --std=min+bizhawk bizhawk tas templates paths.lua start.lua
 
 register:
 	@if [ '$(TAS)' == '' ]; then \
