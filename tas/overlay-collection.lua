@@ -20,6 +20,7 @@ local OverlayCollection = setmetatable(
                 applySubscriptions = applySubscriptions,
             }
         end
-    })
+    }
+)
 
 return OverlayCollection

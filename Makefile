@@ -2,13 +2,6 @@ install:
 	luarocks install mediator_lua --tree lua_modules
 	luarocks install luafilesystem --tree lua_modules
 
-init:
-	@mv config.lua.dist config.lua
-	@mv doc/README-template.md README.md
-	@rm -rf doc
-	@rm -f tas-scaffolding.tar.gz
-	@cp lua_modules/share/lua/5.3/mediator.lua mediator.lua
-
 bizhawk-dump:
 	@if [ '$(TAS)' == '' ]; then \
         echo "Call : make TAS=tas-name bizhawk"; \
