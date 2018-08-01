@@ -16,8 +16,10 @@ bizhawk-lfs:
 register:
 	@if [ '$(TAS)' == '' ]; then \
         echo "Call : make TAS=tas-name FILE=example.lua register"; \
+        exit 1; \
 	elif [ '$(FILE)' == '' ]; then \
         echo "Call : make TAS=tas-name FILE=example.lua register"; \
+        exit 1; \
     else \
         [ -d tas/$(TAS) ] || mkdir tas/$(TAS); \
         lua -e "f=io.open('templates/new-tas-file.lua', 'rb'); c=f:read('*all'); f:close(); f=io.open('tas/$(TAS)/$(FILE)', 'w'); f:write(c); f:close();"; \
