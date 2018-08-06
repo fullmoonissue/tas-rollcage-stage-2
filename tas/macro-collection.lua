@@ -1,5 +1,4 @@
-local Input = require('tas/input')
-local input = Input()
+local input = require('tas/input')()
 
 local MacroCollection = setmetatable(
     {
@@ -8,7 +7,25 @@ local MacroCollection = setmetatable(
     {
         __call = function()
             return {
-                -- Add your macros here (check templates)
+                goToNextTrack = function(currentFrame, fnInitials)
+                    -- Quit track
+                    currentFrame = input:cross(currentFrame + 6)
+
+                    -- Enter or validate initials
+                    if(fnInitials) then
+                        currentFrame = fnInitials(currentFrame)
+                    else
+                        currentFrame = input:cross(currentFrame + 676)
+                    end
+
+                    -- Continue to next track
+                    currentFrame = input:cross(currentFrame + 36)
+
+                    -- Begin next track
+                    currentFrame = input:cross(currentFrame + 36)
+
+                    return currentFrame
+                end
             }
         end
     }

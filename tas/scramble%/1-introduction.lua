@@ -1,4 +1,5 @@
 local input = require('tas/input')()
+local macroCollection = require('tas/macro-collection')()
 
 -- Time : 00:14:43
 -- Track frames : 1692
@@ -18,37 +19,33 @@ cf = input:right(cf + 30, 6)
 cf = input:right(cf + 30, 12)
 cf = input:square(cf + 15, 64)
 
--- Quit track
-cf = input:cross(cf + 6)
+local fnIntials = function(cf)
+    -- F
+    cf = input:up(cf + 676)
+    cf = input:up(cf + 4)
+    cf = input:up(cf + 4)
+    cf = input:up(cf + 4)
+    cf = input:up(cf + 4)
+    cf = input:cross(cf + 4)
+    -- M
+    cf = input:up(cf + 4)
+    cf = input:up(cf + 4)
+    cf = input:up(cf + 4)
+    cf = input:up(cf + 4)
+    cf = input:up(cf + 4)
+    cf = input:up(cf + 4)
+    cf = input:up(cf + 4)
+    cf = input:cross(cf + 4)
+    -- I
+    cf = input:down(cf + 4)
+    cf = input:down(cf + 4)
+    cf = input:down(cf + 4)
+    cf = input:down(cf + 4)
+    cf = input:cross(cf + 4)
 
--- Enter intials (will be made only once)
--- F
-cf = input:up(cf + 676)
-cf = input:up(cf + 4)
-cf = input:up(cf + 4)
-cf = input:up(cf + 4)
-cf = input:up(cf + 4)
-cf = input:cross(cf + 4)
--- M
-cf = input:up(cf + 4)
-cf = input:up(cf + 4)
-cf = input:up(cf + 4)
-cf = input:up(cf + 4)
-cf = input:up(cf + 4)
-cf = input:up(cf + 4)
-cf = input:up(cf + 4)
-cf = input:cross(cf + 4)
--- I
-cf = input:down(cf + 4)
-cf = input:down(cf + 4)
-cf = input:down(cf + 4)
-cf = input:down(cf + 4)
-cf = input:cross(cf + 4)
+    return cf
+end
 
--- Continue to next track
-cf = input:cross(cf + 36)
-
--- Begin next track
-cf = input:cross(cf + 36)
+macroCollection.goToNextTrack(cf, fnIntials)
 
 return input:all()

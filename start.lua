@@ -1,19 +1,9 @@
 local config = require('config')
 local paths = require('paths')
-local preloads = require(paths['preloads'])
-local dump = require('tas/dump')()
--- Add the mediator for events management
-local mediator = require('mediator')()
-
--- Retrieve the inputs of the current tas
-local joypadSet = dump.fromLuaFilesToLuaInputs(
-    paths['tas'],
-    require(paths['files']),
-    config['currentTas']
-)
 
 -- Preload a savestate, if exists
-if(preloads[config['currentTas']] ~= nil) then
+local preloads = require(paths['preloads'])
+if(preloads[config['currentTas']]) then
     savestate.load(paths['savestate'] .. '/' .. preloads[config['currentTas']])
 end
 
@@ -23,8 +13,15 @@ if(config['loadSlot'] ~= nil) then
 end
 
 -- Add overlays
+local mediator = require('mediator')()
 require('tas/overlay-collection')().applySubscriptions(mediator)
 
+-- Retrieve the inputs of the current tas
+local joypadSet = require('tas/dump')().fromLuaFilesToLuaInputs(
+    paths['tas'],
+    require(paths['files']),
+    config['currentTas']
+)
 while (true) do
     local fc = emu.framecount()
 
