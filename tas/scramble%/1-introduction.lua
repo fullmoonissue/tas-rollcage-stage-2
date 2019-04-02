@@ -1,11 +1,11 @@
+local tracksStarts = require('tracks-starts')
 local input = require('tas/input')()
 local macroCollection = require('tas/macro-collection')()
 
 -- Time : 00:14:43
 -- Track frames : 1692
 
--- Turbo start between 3128 / 3141 (included)
-local cf = 3128
+local cf = tracksStarts['1-introduction']
 input:cross(cf, 805)
 cf = input:left(3350, 26)
 cf = input:left(cf + 25, 24)

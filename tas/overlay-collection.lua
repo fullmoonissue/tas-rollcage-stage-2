@@ -8,6 +8,9 @@ local OverlayCollection = setmetatable(
             local framecount = function(fc)
                 gui.drawText(5, 60, 'Frame', 'white', 'black', 15)
                 gui.drawText(5, 75, fc, 'white', 'black', 20)
+
+                gui.drawText(5, 110, 'Start', 'white', 'black', 15)
+                gui.drawText(5, 125, fc - 20712, 'white', 'black', 20)
             end
 
             local applySubscriptions = function(mediator)
